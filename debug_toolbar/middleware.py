@@ -36,7 +36,7 @@ class DebugToolbarMiddleware(object):
         if not settings.DEBUG or not getattr(settings, 'DEBUG_TOOLBAR', True) or getattr(settings, 'TEST', False):
             return False
 
-        if request.path.startswith(settings.MEDIA_URL):
+        if settings.MEDIA_URL and request.path.startswith(settings.MEDIA_URL):
             return False
 
         if response:
